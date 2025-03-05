@@ -1,4 +1,6 @@
-﻿using LudoAPI.Services;
+﻿using FluentAssertions;
+using LudoAPI.Models;
+using LudoAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +16,15 @@ namespace LudoTest.PlayerServiceTests
         public void PlayerService_ChooseColor_Blue()
         {
             //Arrange
+            Player player = new Player();
             PlayerService playerService = new PlayerService();
 
             //Act
-            playerService.ChooseColor();
+            player.Color.ColorType = playerService.ChooseColor(ColorType.Blue);
 
             //Assert
+            player.Color.ColorType.Should().Be(ColorType.Blue); 
+
         }
     }
 }
