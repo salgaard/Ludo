@@ -1,8 +1,12 @@
-﻿namespace LudoAPI.Services
+﻿using LudoAPI.Models;
+
+namespace LudoAPI.Services
 {
     public class PlayerService
     {
-        public void ChooseColor()
+
+        //?
+        public ColorType ChooseColor(ColorType color)
         {
             throw new NotImplementedException();
         }
