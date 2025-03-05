@@ -5,13 +5,13 @@ namespace LudoAPI.Services
     public class GameService
     {
         private readonly IQueueService _queueService;
+        public Player CurrentPlayer { get; set; }
 
         public GameService(IQueueService queueService)
         {
             _queueService = queueService;
         }
 
-        public Player CurrentPlayer { get; set; }
         public void StartGame()
         {
             throw new NotImplementedException();
