@@ -17,6 +17,8 @@ namespace LudoAPI.Services
             throw new NotImplementedException();
         }
 
+
+
         public void RemovePlayerFromQueue(Player player)
         {
             //når det er players tur
