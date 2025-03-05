@@ -7,7 +7,6 @@ namespace LudoAPI.Services
         private readonly IQueueService _queueService;
         public Player CurrentPlayer { get; set; }
 
-
         public GameService(IQueueService queueService)
         {
             _queueService = queueService;
