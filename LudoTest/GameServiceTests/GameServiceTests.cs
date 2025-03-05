@@ -1,5 +1,6 @@
 ﻿using LudoAPI.Models;
 using LudoAPI.Services;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,32 @@ namespace LudoTest.GameServiceTests
 {
     public class GameServiceTests
     {
+
+        private readonly Mock<IQueueService> _queueServiceMock;
+
+        public GameServiceTests()
+        {
+            _queueServiceMock = new Mock<IQueueService>();
+
+        }
+
         [Fact]
         public void GameService_NewTurn_BackToQueue()
         {
             //Arrange
             Player player = new Player();
-            GameService service = new GameService();
-            
+            QueueService queueService = new QueueService();
+            queueService.AddPlayerToQueue(player);
+            GameService service = new GameService(queueService);
+
+            service.CurrentPlayer = player;
+
             //Act
+            
+
 
             //Assert
+            
         }
     }
 }
