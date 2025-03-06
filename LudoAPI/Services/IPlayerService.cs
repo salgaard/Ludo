@@ -7,6 +7,5 @@ namespace LudoAPI.Services
         public IReadOnlyList<Player> Players { get; }
         void AddPlayer();
         Color ChooseColor(Color color);
-        void WaitTurn();
     }
 }
