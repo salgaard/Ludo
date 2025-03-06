@@ -19,13 +19,13 @@ namespace LudoTest.PlayerServiceTests
             PlayerService playerService = new PlayerService();
 
             //Act
-            var chosenColor = playerService.ChooseColor(ColorType.Blue);
+            var chosenColor = playerService.ChooseColor(Color.Blue);
             var piece = new Piece(chosenColor);
             var player = new Player(chosenColor, [piece]);
             
 
             //Assert
-            player.Color.Should().Be(ColorType.Blue); 
+            player.Color.Should().Be(Color.Blue); 
 
         }
     }

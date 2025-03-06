@@ -2,7 +2,7 @@
 {
     public class Player
     {
-        public ColorType Color { get;}
+        public Color Color { get;}
 
         private List<Piece> Pieces { get; set; }
 
@@ -13,7 +13,7 @@
 
         }
 
-        public Player(ColorType color, List<Piece> pieces)
+        public Player(Color color, List<Piece> pieces)
         {
             this.Color = color;
             this.Pieces = pieces;

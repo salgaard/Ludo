@@ -30,10 +30,10 @@ namespace LudoTest.StartingServiceTests
             _playerServiceMock.Setup(service => service.Players)
                            .Returns(new List<Player> 
                            { 
-                               new Player(ColorType.Red, new List<Piece>()),
-                               new Player(ColorType.Red, new List<Piece>()),
-                               new Player(ColorType.Red, new List<Piece>()),
-                               new Player(ColorType.Red, new List<Piece>())
+                               new Player(Color.Red, new List<Piece>()),
+                               new Player(Color.Red, new List<Piece>()),
+                               new Player(Color.Red, new List<Piece>()),
+                               new Player(Color.Red, new List<Piece>())
                            });
             //Act
             var rolls = startingService.RollAndReturnAllPlayerRolls();
@@ -81,10 +81,10 @@ namespace LudoTest.StartingServiceTests
             _playerServiceMock.Setup(service => service.Players)
                            .Returns(new List<Player>
                            {
-                               new Player(ColorType.Red, new List<Piece>()),
-                               new Player(ColorType.Red, new List<Piece>()),
-                               new Player(ColorType.Red, new List<Piece>()),
-                               new Player(ColorType.Red, new List<Piece>())
+                               new Player(Color.Red, new List<Piece>()),
+                               new Player(Color.Red, new List<Piece>()),
+                               new Player(Color.Red, new List<Piece>()),
+                               new Player(Color.Red, new List<Piece>())
                            });
 
             ConcurrentDictionary<Player, int> highestRollers = new();
