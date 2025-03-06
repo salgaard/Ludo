@@ -2,9 +2,17 @@
 {
     public class Player
     {
-        public Color Color { get; set; }
+        public ColorType Color { get;}
 
-        public List<Piece> Pieces { get; set; }
+        private List<Piece> pieces { get; set; }
+
+        private int turnsLeft { get; set; } = 0;
+
+        public Player(ColorType color, List<Piece> pieces)
+        {
+            this.Color = color;
+            this.pieces = pieces;
+        }
     }
 
    

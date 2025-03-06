@@ -16,14 +16,16 @@ namespace LudoTest.PlayerServiceTests
         public void PlayerService_ChooseColor_Blue()
         {
             //Arrange
-            Player player = new Player();
             PlayerService playerService = new PlayerService();
 
             //Act
-            player.Color.ColorType = playerService.ChooseColor(ColorType.Blue);
+            var chosenColor = playerService.ChooseColor(ColorType.Blue);
+            var piece = new Piece(chosenColor);
+            var player = new Player(chosenColor, [piece]);
+            
 
             //Assert
-            player.Color.ColorType.Should().Be(ColorType.Blue); 
+            player.Color.Should().Be(ColorType.Blue); 
 
         }
     }
