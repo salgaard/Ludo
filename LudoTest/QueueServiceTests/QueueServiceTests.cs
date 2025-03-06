@@ -17,7 +17,7 @@ namespace LudoTest.QueueServiceTests
         public void QueueService_AddPlayerToQueue_PlayerAdded()
         {
             //Arrange
-            var yellow = ColorType.Yellow;
+            var yellow = Color.Yellow;
             var piece1 = new Piece(yellow);
             var piece2 = new Piece(yellow);
             var piece3 = new Piece(yellow);
@@ -46,7 +46,7 @@ namespace LudoTest.QueueServiceTests
         public void QueueService_RemovePlayerToQueue_PlayerRemoved()
         {
             //Arrange
-            var green = ColorType.Green;
+            var green = Color.Green;
             var piece1 = new Piece(green);
             var piece2 = new Piece(green);
             var piece3 = new Piece(green);

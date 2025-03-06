@@ -11,8 +11,8 @@ public class ArrowTileTest
         //Arrange
         var defaultMove = new Move(1, 0);
         var arrowMove = new Move(0, 1);
-        var redColor = ColorType.Red;
-        var blueColor = ColorType.Blue;
+        var redColor = Color.Red;
+        var blueColor = Color.Blue;
         var arrowTile = new ArrowTile(defaultMove, arrowMove, redColor);
         var redPiece = new Piece(redColor);
         var bluePiece = new Piece(blueColor);

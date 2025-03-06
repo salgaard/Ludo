@@ -2,13 +2,11 @@
 {
     public class Piece
     {
-        public ColorType Color;
+        public Color Color;
 
-        public Piece(ColorType color)
+        public Piece(Color color)
         {
             Color = color;
         }
     }
-
-  
 }

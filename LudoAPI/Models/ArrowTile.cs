@@ -2,10 +2,10 @@
 
 public class ArrowTile : Tile
 {
-    private ColorType color;
+    private Color color;
     private Move arrowMove;
     
-    public ArrowTile(Move move, Move arrowMove, ColorType color) : base(move)
+    public ArrowTile(Move move, Move arrowMove, Color color) : base(move)
     {
         this.arrowMove = arrowMove;
         this.color = color;

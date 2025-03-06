@@ -11,7 +11,7 @@ public class TileTest
         //Arrange
         var move = new Move(1,0);
         var tile = new Tile(move);
-        var blueColor = ColorType.Blue;
+        var blueColor = Color.Blue;
         var piece = new Piece(blueColor);
         
         //Act
