@@ -2,7 +2,7 @@
 
 namespace LudoAPI.Services
 {
-    public class GameService
+    public class GameService : IGameService
     {
         private readonly IQueueService _queueService;
         public Player CurrentPlayer { get; set; }
@@ -17,10 +17,15 @@ namespace LudoAPI.Services
             throw new NotImplementedException();
         }
 
+        public Player HaveTurn(Player player)
+        {
+        }
+        
         public void NewTurn()
         {
             
             //tager currentplayer til køen og sætter den næste player til currentplayer
+
             throw new NotImplementedException();
         }
     }
