@@ -4,14 +4,14 @@
     {
         public ColorType Color { get;}
 
-        private List<Piece> pieces { get; set; }
+        //pieces are added when starting new game
+        public List<Piece>? Pieces { get; set; }
 
         private int turnsLeft { get; set; } = 0;
 
-        public Player(ColorType color, List<Piece> pieces)
+        public Player(ColorType color)
         {
-            this.Color = color;
-            this.pieces = pieces;
+            Color = color;
         }
     }
 

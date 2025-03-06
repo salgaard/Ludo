@@ -5,20 +5,24 @@ namespace LudoAPI.Services
     public class GameService : IGameService
     {
         private readonly IQueueService _queueService;
-        public Player CurrentPlayer { get; set; }
 
         public GameService(IQueueService queueService)
         {
             _queueService = queueService;
         }
 
-        public void StartGame()
+        public Game StartNewGame(List<Player> players)
         {
+            //Create and assign pieces to players
+            //Create Board
+            //Place player pieces in starting spots
+            //Return Game
             throw new NotImplementedException();
         }
 
-        public Player HaveTurn(Player player)
+        public Player HaveTurn(Game game, Player player)
         {
+            throw new NotImplementedException();
         }
         
         public void NewTurn()
