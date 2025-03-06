@@ -12,11 +12,6 @@ namespace LudoAPI.Services
             throw new NotImplementedException();
         }
 
-        public void WaitTurn()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddPlayer()
         {
             throw new NotImplementedException();

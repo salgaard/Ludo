@@ -22,7 +22,8 @@ namespace LudoTest.GameServiceTests
         public void GameService_NewTurn_BackToQueue()
         {
             //Arrange
-            Player player = new Player();
+            var piece1 = new Piece(ColorType.Yellow);
+            Player player = new Player(ColorType.Yellow, new List<Piece> { piece1 });
             QueueService queueService = new QueueService();
             GameService service = new GameService(queueService);
             service.CurrentPlayer = player;
