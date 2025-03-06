@@ -18,7 +18,6 @@ namespace LudoTest.GameServiceTests
         public void GameService_NewTurn_BackToQueue()
         {
             //Arrange
-            Player player = new Player(ColorType.Blue);
             QueueService queueService = new QueueService();
             GameService service = new GameService(queueService);
 
@@ -34,10 +33,10 @@ namespace LudoTest.GameServiceTests
         {
             //Arrange 
             GameService service = new GameService(_queueServiceMock.Object);
-            var bluePlayer = new Player(ColorType.Blue);
-            var redPlayer = new Player(ColorType.Red);
-            var yellowPlayer = new Player(ColorType.Yellow);
-            var greenPlayer = new Player(ColorType.Green);
+            var bluePlayer = new Player(Color.Blue);
+            var redPlayer = new Player(Color.Red);
+            var yellowPlayer = new Player(Color.Yellow);
+            var greenPlayer = new Player(Color.Green);
             var players = new List<Player> { bluePlayer, redPlayer, yellowPlayer, greenPlayer };
             
             //Act

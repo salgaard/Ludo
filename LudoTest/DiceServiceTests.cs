@@ -17,5 +17,20 @@ namespace LudoTest
             //Assert
             Assert.Contains(result, acceptableNumbers);
         }
+
+
+        [Fact]
+        public void IsItA6Tests()
+        {
+            //Arrage
+            DiceService service = new DiceService();
+
+            //Act
+            bool result = service.IsItA6();
+
+            //Assert
+            Assert.Equal(true, result);
+        }
+
     }
 }

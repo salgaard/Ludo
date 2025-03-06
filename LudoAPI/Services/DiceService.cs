@@ -7,6 +7,11 @@
             throw new NotImplementedException();
         }
 
+        public bool IsItA6()
+        {
+            throw new NotImplementedException();
+        }
+
 
     }
 }
