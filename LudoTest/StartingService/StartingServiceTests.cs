@@ -2,12 +2,7 @@
 using LudoAPI.Models;
 using LudoAPI.Services;
 using Moq;
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LudoTest.StartingServiceTests
 {
@@ -30,10 +25,10 @@ namespace LudoTest.StartingServiceTests
             _playerServiceMock.Setup(service => service.Players)
                            .Returns(new List<Player> 
                            { 
-                               new Player(Color.Red, new List<Piece>()),
-                               new Player(Color.Red, new List<Piece>()),
-                               new Player(Color.Red, new List<Piece>()),
-                               new Player(Color.Red, new List<Piece>())
+                               new(Color.Red),
+                               new(Color.Red),
+                               new(Color.Red),
+                               new(Color.Red)
                            });
             //Act
             var rolls = startingService.RollAndReturnAllPlayerRolls();
@@ -47,10 +42,10 @@ namespace LudoTest.StartingServiceTests
         {
             //Arrange
             ConcurrentDictionary<Player, int> startingRolls = new();
-            startingRolls.TryAdd(new Player(), 1);
-            startingRolls.TryAdd(new Player(), 2);
-            startingRolls.TryAdd(new Player(), 4);
-            startingRolls.TryAdd(new Player(), 4);
+            startingRolls.TryAdd(new Player(Color.Blue), 1);
+            startingRolls.TryAdd(new Player(Color.Red), 2);
+            startingRolls.TryAdd(new Player(Color.Green), 4);
+            startingRolls.TryAdd(new Player(Color.Yellow), 4);
 
             //Act
             var highestRolls = startingService.FindAndReturnHighestRolls();
@@ -64,8 +59,8 @@ namespace LudoTest.StartingServiceTests
         {
             //Arrange
             ConcurrentDictionary<Player, int> highestRollers = new();
-            highestRollers.TryAdd(new Player(), 4);
-            highestRollers.TryAdd(new Player(), 4);
+            highestRollers.TryAdd(new Player(Color.Blue), 4);
+            highestRollers.TryAdd(new Player(Color.Green), 4);
 
             //Act
             var shouldTheyReroll = startingService.ShouldReRoll();
@@ -81,15 +76,15 @@ namespace LudoTest.StartingServiceTests
             _playerServiceMock.Setup(service => service.Players)
                            .Returns(new List<Player>
                            {
-                               new Player(Color.Red, new List<Piece>()),
-                               new Player(Color.Red, new List<Piece>()),
-                               new Player(Color.Red, new List<Piece>()),
-                               new Player(Color.Red, new List<Piece>())
+                               new(Color.Red),
+                               new(Color.Red),
+                               new(Color.Red),
+                               new(Color.Red)
                            });
 
             ConcurrentDictionary<Player, int> highestRollers = new();
-            highestRollers.TryAdd(new Player(), 4);
-            highestRollers.TryAdd(new Player(), 4);
+            highestRollers.TryAdd(new Player(Color.Blue), 4);
+            highestRollers.TryAdd(new Player(Color.Green), 4);
 
             var rolls = startingService.RollAndReturnAllPlayerRolls();
 
