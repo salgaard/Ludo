@@ -8,6 +8,5 @@ namespace LudoAPI.Services
 
         void AddPlayer();
         ColorType ChooseColor(ColorType color);
-        void WaitTurn();
     }
 }
