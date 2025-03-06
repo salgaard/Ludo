@@ -18,6 +18,8 @@ namespace LudoTest
             Assert.Contains(result, acceptableNumbers);
         }
 
+
+        [Fact]
         public void IsItA6Test()
         {
             //Arrage
