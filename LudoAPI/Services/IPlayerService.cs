@@ -4,8 +4,7 @@ namespace LudoAPI.Services
 {
     public interface IPlayerService
     {
-        List<Player> Players { get; set; }
-
+        public IReadOnlyList<Player> Players { get; }
         void AddPlayer();
         ColorType ChooseColor(ColorType color);
         void WaitTurn();

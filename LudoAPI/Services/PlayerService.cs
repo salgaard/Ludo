@@ -4,7 +4,8 @@ namespace LudoAPI.Services
 {
     public class PlayerService : IPlayerService
     {
-        public List<Player> Players { get; set; }
+        private List<Player> players = new();
+        public IReadOnlyList<Player> Players => players;
 
         public ColorType ChooseColor(ColorType color)
         {
