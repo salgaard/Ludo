@@ -8,6 +8,11 @@
 
         private int turnsLeft { get; set; } = 0;
 
+        public Player()
+        {
+
+        }
+
         public Player(ColorType color, List<Piece> pieces)
         {
             this.Color = color;

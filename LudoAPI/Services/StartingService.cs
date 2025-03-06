@@ -1,4 +1,5 @@
 ﻿using LudoAPI.Models;
+using System.Collections.Concurrent;
 
 namespace LudoAPI.Services
 {
@@ -6,31 +7,33 @@ namespace LudoAPI.Services
     {
         private readonly IPlayerService _playerService;
         private readonly IDiceService _diceService;
-        public Dictionary<Player, int> startingRolls = new Dictionary<Player, int>();
+        private readonly ConcurrentDictionary<Player, int> _startingRolls = new();
+        public IReadOnlyDictionary<Player, int> StartingRolls => _startingRolls;
+
         public StartingService(IPlayerService playerService, IDiceService diceService)
         {
             _playerService = playerService;
             _diceService = diceService;
         }
 
-        public void RunStartingRolls()
+        public ConcurrentDictionary<Player, int> RollAndReturnAllPlayerRolls()
         {
             throw new NotImplementedException();
         }
 
-        public void FindHighestRoll()
+        public ConcurrentDictionary<Player, int> FindAndReturnHighestRolls()
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveNotHighest()
+        public bool ShouldReRoll()
         {
             throw new NotImplementedException();
         }
 
-        public void ReRollHighest()
+        public void AddAndReplaceStartingRolls(ConcurrentDictionary<Player, int> rolls)
         {
-            throw new NotImplementedException(); 
+            throw new NotImplementedException();
         }
     }
 }

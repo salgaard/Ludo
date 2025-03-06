@@ -19,6 +19,7 @@ namespace LudoAPI.Services
 
         public Player HaveTurn(Player player)
         {
+            throw new NotImplementedException();
         }
         
         public void NewTurn()
