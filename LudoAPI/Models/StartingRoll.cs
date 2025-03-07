@@ -8,7 +8,7 @@
 
         public void addRoll(Roll roll)
         {
-            rolls.Add(roll);
+            Rolls.Add(roll);
         }
 
         public StartingRoll(Lobby lobby)

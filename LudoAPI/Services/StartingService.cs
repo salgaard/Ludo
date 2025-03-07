@@ -15,16 +15,6 @@ namespace LudoAPI.Services
             _diceService = diceService;
         }
 
-        public ConcurrentDictionary<Player, int> RollAndReturnAllPlayerRolls()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ConcurrentDictionary<Player, int> FindAndReturnHighestRolls()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool ShouldReRoll()
         {
             throw new NotImplementedException();
