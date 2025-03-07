@@ -10,9 +10,8 @@ namespace LudoAPI.Services
         private readonly ConcurrentDictionary<Player, int> _startingRolls = new();
         public IReadOnlyDictionary<Player, int> StartingRolls => _startingRolls;
 
-        public StartingService(IPlayerService playerService, IDiceService diceService)
+        public StartingService(IDiceService diceService)
         {
-            _playerService = playerService;
             _diceService = diceService;
         }
 
@@ -32,6 +31,11 @@ namespace LudoAPI.Services
         }
 
         public void AddAndReplaceStartingRolls(ConcurrentDictionary<Player, int> rolls)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<StartingRoll> StartingRoll(List<StartingRoll> startingRolls)
         {
             throw new NotImplementedException();
         }

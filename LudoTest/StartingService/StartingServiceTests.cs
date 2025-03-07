@@ -15,7 +15,7 @@ namespace LudoTest.StartingServiceTests
         {
             _playerServiceMock = new Mock<IPlayerService>();
             _diceServiceMock = new Mock<IDiceService>();
-            startingService = new StartingService(_playerServiceMock.Object, _diceServiceMock.Object);
+            startingService = new StartingService(_diceServiceMock.Object);
         }
 
         [Fact]
@@ -25,10 +25,10 @@ namespace LudoTest.StartingServiceTests
             _playerServiceMock.Setup(service => service.Players)
                            .Returns(new List<Player> 
                            { 
-                               new(1),
-                               new(2),
-                               new(3),
-                               new(4)
+                               new Player(1),
+                               new Player(2),
+                               new Player(3),
+                               new Player(4)
                            });
             //Act
             var rolls = startingService.RollAndReturnAllPlayerRolls();
@@ -42,7 +42,7 @@ namespace LudoTest.StartingServiceTests
         {
             //Arrange
             ConcurrentDictionary<Player, int> startingRolls = new();
-            startingRolls.TryAdd(new Player( 1), 1);
+            startingRolls.TryAdd(new Player(1), 1);
             startingRolls.TryAdd(new Player(2), 2);
             startingRolls.TryAdd(new Player(3), 4);
             startingRolls.TryAdd(new Player(4), 4);
@@ -100,6 +100,40 @@ namespace LudoTest.StartingServiceTests
             startingService.AddAndReplaceStartingRolls(highestRollers);
             startingService.StartingRolls.Should().HaveCount(2);
             */
+        }
+
+        [Fact]
+
+        public void StartingRollTest()
+        {
+            //Arrange
+            _diceServiceMock.Setup(service => service.RollDice()).Returns(1);
+
+            List<StartingRoll> rolls = new List<StartingRoll>();
+
+            Lobby lobby = new Lobby(new List<Player>()
+            {
+                new Player(1),
+                new Player(2),
+                new Player(3),
+                new Player(4)
+            }) ;
+
+            StartingRoll startingRoll = new StartingRoll(lobby);
+
+            var expectedRoll = new Roll(new Player(1), 1);
+            var expectedStartingRolls = new StartingRoll(lobby)
+            {
+                Rolls = new List<Roll>(){
+                    expectedRoll
+                }
+            };
+
+            //Act
+            var result = startingService.StartingRoll(rolls);
+
+            //Assert
+            Assert.Equal(result, new List<StartingRoll>() { expectedStartingRolls });
         }
     }
 }
