@@ -2,16 +2,14 @@
 {
     public class Player
     {
-        public Color Color { get;}
-        
-        //pieces are added when starting new game
+        // number from 1-4
+        public int Id { get; }
+
         public List<Piece>? Pieces { get; set; }
 
-        private int turnsLeft { get; set; } = 0;
-
-        public Player(Color color)
+        public Player(int id)
         {
-            Color = color;
+            Id = id;
         }
     }
 }

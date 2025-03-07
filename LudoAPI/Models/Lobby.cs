@@ -2,7 +2,12 @@
 
 public class Lobby
 {
-    public int ID { get; }
+    public Guid Id { get; } = Guid.NewGuid();
     
     public List<Player> Players { get; }
+    
+    public Lobby(List<Player> players)
+    {
+        Players = players;
+    }
 }
