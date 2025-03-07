@@ -1,11 +1,6 @@
 ﻿using FluentAssertions;
 using LudoAPI.Models;
 using LudoAPI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LudoTest.PlayerServiceTests
 {
@@ -20,10 +15,8 @@ namespace LudoTest.PlayerServiceTests
 
             //Act
             var chosenColor = playerService.ChooseColor(Color.Blue);
-            var piece = new Piece(chosenColor);
-            var player = new Player(chosenColor, [piece]);
+            var player = new Player(chosenColor);
             
-
             //Assert
             player.Color.Should().Be(Color.Blue); 
 
