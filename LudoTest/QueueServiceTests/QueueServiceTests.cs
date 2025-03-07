@@ -1,11 +1,6 @@
 ﻿using FluentAssertions;
 using LudoAPI.Models;
 using LudoAPI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LudoTest.QueueServiceTests
 {
@@ -22,7 +17,11 @@ namespace LudoTest.QueueServiceTests
             var piece2 = new Piece(yellow);
             var piece3 = new Piece(yellow);
             var piece4 = new Piece(yellow);
-            Player player = new(yellow, new List<Piece> { piece1, piece2, piece3, piece4 });
+            Player player = new(yellow)
+            {
+                Pieces = [piece1, piece2, piece3, piece4]
+            };
+            
             QueueService service = new QueueService();
 
             //Act
@@ -50,7 +49,12 @@ namespace LudoTest.QueueServiceTests
             var piece1 = new Piece(green);
             var piece2 = new Piece(green);
             var piece3 = new Piece(green);
-            var piece4 = new Piece(green); Player player = new(green, new List<Piece> { piece1, piece2, piece3, piece4 });
+            var piece4 = new Piece(green); 
+            Player player = new(green)
+            {
+                Pieces = [piece1, piece2, piece3, piece4]
+            };
+
             QueueService service = new QueueService();
 
             //Act
@@ -62,7 +66,6 @@ namespace LudoTest.QueueServiceTests
             piece1.Color.Should().Be(green);
 
         }
-
         
     }
 }

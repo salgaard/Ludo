@@ -3,22 +3,15 @@
     public class Player
     {
         public Color Color { get;}
-
-        private List<Piece> Pieces { get; set; }
+        
+        //pieces are added when starting new game
+        public List<Piece>? Pieces { get; set; }
 
         private int turnsLeft { get; set; } = 0;
 
-        public Player()
+        public Player(Color color)
         {
-
-        }
-
-        public Player(Color color, List<Piece> pieces)
-        {
-            this.Color = color;
-            this.Pieces = pieces;
+            Color = color;
         }
     }
-
-   
 }
