@@ -2,13 +2,13 @@
 {
     public class Roll
     {
-        private Player player;
+        public Player Player { get; }
 
         private int value;
 
         public Roll(Player _player, int _value)
         {
-            this.player = _player;
+            this.Player = _player;
             this.value = _value;
         }
     }

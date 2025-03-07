@@ -7,25 +7,28 @@ namespace LudoAPI.Services
     {
         private readonly IPlayerService _playerService;
         private readonly IDiceService _diceService;
-        private readonly ConcurrentDictionary<Player, int> _startingRolls = new();
-        public IReadOnlyDictionary<Player, int> StartingRolls => _startingRolls;
 
         public StartingService(IDiceService diceService)
         {
             _diceService = diceService;
         }
 
-        public bool ShouldReRoll()
+        public Lobby HandleRerolls(Lobby lobby)
         {
             throw new NotImplementedException();
         }
 
-        public void AddAndReplaceStartingRolls(ConcurrentDictionary<Player, int> rolls)
+        public List<Player> GetReRollers(List<Roll> startingRolls)
         {
             throw new NotImplementedException();
         }
 
-        public List<StartingRoll> StartingRoll(List<StartingRoll> startingRolls)
+        public bool ShouldReRoll(List<Roll> startingRolls)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Lobby StartingRoll(Lobby lobby)
         {
             throw new NotImplementedException();
         }
