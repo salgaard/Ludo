@@ -4,12 +4,6 @@ namespace LudoAPI.Services
 {
     public class GameService : IGameService
     {
-        private readonly IQueueService _queueService;
-
-        public GameService(IQueueService queueService)
-        {
-            _queueService = queueService;
-        }
 
         public Game StartNewGame(List<Player> players)
         {

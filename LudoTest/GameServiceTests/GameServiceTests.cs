@@ -7,19 +7,12 @@ namespace LudoTest.GameServiceTests
 {
     public class GameServiceTests
     {
-        private readonly Mock<IQueueService> _queueServiceMock;
-        
-        public GameServiceTests()
-        {
-            _queueServiceMock = new Mock<IQueueService>();
-        }
 
         [Fact]
         public void GameService_NewTurn_BackToQueue()
         {
             //Arrange
-            QueueService queueService = new QueueService();
-            GameService service = new GameService(queueService);
+            GameService service = new GameService();
 
             //Act
             service.NewTurn();
@@ -32,11 +25,11 @@ namespace LudoTest.GameServiceTests
         public void StartNewGame()
         {
             //Arrange 
-            GameService service = new GameService(_queueServiceMock.Object);
-            var bluePlayer = new Player(Color.Blue);
-            var redPlayer = new Player(Color.Red);
-            var yellowPlayer = new Player(Color.Yellow);
-            var greenPlayer = new Player(Color.Green);
+            GameService service = new GameService();
+            var bluePlayer = new Player(1);
+            var redPlayer = new Player(2);
+            var yellowPlayer = new Player(3);
+            var greenPlayer = new Player(4);
             var players = new List<Player> { bluePlayer, redPlayer, yellowPlayer, greenPlayer };
             
             //Act

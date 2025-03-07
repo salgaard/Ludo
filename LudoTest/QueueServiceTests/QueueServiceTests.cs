@@ -12,12 +12,13 @@ namespace LudoTest.QueueServiceTests
         public void QueueService_AddPlayerToQueue_PlayerAdded()
         {
             //Arrange
-            var yellow = Color.Yellow;
+            var playerId = 4;
+            var yellow = (Color) playerId;
             var piece1 = new Piece(yellow);
             var piece2 = new Piece(yellow);
             var piece3 = new Piece(yellow);
             var piece4 = new Piece(yellow);
-            Player player = new(yellow)
+            Player player = new(playerId)
             {
                 Pieces = [piece1, piece2, piece3, piece4]
             };
@@ -30,13 +31,12 @@ namespace LudoTest.QueueServiceTests
             //Assert
             player.Should().NotBeNull();
             service.Players.Should().Contain(player);
-            player.Color.Should().Be(yellow);
+            
+            Assert.Equal(Color.Yellow, (Color)player.Id);
             piece1.Color.Should().Be(yellow);
             piece2.Color.Should().Be(yellow);
             piece3.Color.Should().Be(yellow);
             piece4.Color.Should().Be(yellow);
-
-
         }
 
 
@@ -45,12 +45,13 @@ namespace LudoTest.QueueServiceTests
         public void QueueService_RemovePlayerToQueue_PlayerRemoved()
         {
             //Arrange
-            var green = Color.Green;
+            var playerId = 2;
+            var green = (Color)2;
             var piece1 = new Piece(green);
             var piece2 = new Piece(green);
             var piece3 = new Piece(green);
             var piece4 = new Piece(green); 
-            Player player = new(green)
+            Player player = new(playerId)
             {
                 Pieces = [piece1, piece2, piece3, piece4]
             };
@@ -62,7 +63,8 @@ namespace LudoTest.QueueServiceTests
 
             //Assert
             service.Players.Should().NotContain(player);
-            player.Color.Should().Be(green);
+            
+            Assert.Equal(Color.Green, (Color)player.Id);
             piece1.Color.Should().Be(green);
 
         }
