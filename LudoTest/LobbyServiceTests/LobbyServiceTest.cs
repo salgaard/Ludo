@@ -12,9 +12,9 @@ public class LobbyServiceTest
         //Arrange
         var lobbyService = new LobbyService();
         
-        var players = new List<Player>()
+        var players = new List<LobbyPlayer>()
         {
-            new Player(1), new Player(2), new Player(3), new Player(4)
+            new LobbyPlayer(1), new LobbyPlayer(2), new LobbyPlayer(3), new LobbyPlayer(4)
         };
         
         var expected = new Lobby(players);

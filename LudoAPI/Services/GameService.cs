@@ -9,7 +9,7 @@ namespace LudoAPI.Services
             throw new NotImplementedException();
         }
 
-        public Player HaveTurn(Game game, Player player)
+        public LobbyPlayer HaveTurn(Game game, LobbyPlayer player)
         {
             throw new NotImplementedException();
         }
