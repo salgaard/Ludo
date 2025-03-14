@@ -6,7 +6,7 @@ public class Game
     //todo could be private if not for test?
     public List<LobbyPlayer> players { get; }
     //Is initially decided by who rolls the highest number on the dice
-    public int currentPlayerId {get; set;}
+    public int? currentPlayerId {get; set;}
 
     //todo board/tiles
     

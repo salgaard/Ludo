@@ -17,7 +17,6 @@ namespace LudoAPI
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<IDiceService, DiceService>();
-            builder.Services.AddSingleton<IQueueService, QueueService>();
 
             var app = builder.Build();
 
