@@ -2,14 +2,18 @@
 
 public class Lobby
 {
-    public Guid Id { get; } = Guid.NewGuid();
+    
+    public int Id { get; }
     
     public List<LobbyPlayer> Players { get; } 
 
     public List<Roll> StartingRolls { get; set; } = new List<Roll>();
     
-    public Lobby(List<LobbyPlayer> players)
+    public Lobby(List<LobbyPlayer> players, int id)
     {
         Players = players;
+        Id = id;
     }
+
+ 
 }

@@ -115,7 +115,7 @@ namespace LudoTest.StartingServiceTests
                 new LobbyPlayer(2),
                 new LobbyPlayer(3),
                 new LobbyPlayer(4)
-            }) ;
+            },1) ;
 
             Lobby expectedLobby = new Lobby(new List<LobbyPlayer>()
             {
@@ -123,7 +123,7 @@ namespace LudoTest.StartingServiceTests
                 new LobbyPlayer(2),
                 new LobbyPlayer(3),
                 new LobbyPlayer(4)
-            });
+            }, 1);
 
             var expectedRoll = new Roll(new LobbyPlayer(1), 1);
             expectedLobby.StartingRolls.Add(expectedRoll);

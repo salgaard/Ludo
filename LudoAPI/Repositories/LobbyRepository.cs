@@ -6,10 +6,28 @@ namespace LudoAPI.Repositories
     {
         public List<Lobby> Lobbies { get; } = new List<Lobby>();
 
-        public void Add(Lobby game)
+        public Lobby AddNewLobby(Lobby lobby)
         {
-            throw new NotImplementedException();
+            Lobby newLobby = new(lobby.Players, GetNextId());
+            Lobbies.Add(newLobby);
+            return newLobby;
+
         }
+
+        public int GetNextId()
+        {
+            if (Lobbies.Count() == 0)
+            {
+                return 1;
+            }
+            else
+            {
+               return Lobbies[Lobbies.Count()-1].Id+1;
+            }
+
+        }
+
+
 
         public Lobby Get(int id)
         {
