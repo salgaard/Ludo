@@ -11,7 +11,6 @@ namespace LudoAPI.Repositories
             Lobby newLobby = new(lobby.Players, GetNextId());
             Lobbies.Add(newLobby);
             return newLobby;
-
         }
 
         public int GetNextId()

@@ -20,12 +20,15 @@ namespace LudoAPI.Services
 
         public List<LobbyPlayer> GetReRollers(List<Roll> startingRolls)
         {
-            throw new NotImplementedException();
+            int highest = startingRolls.Max(x => x.Value);
+            return startingRolls.Where(x => x.Value == highest)
+                .Select(x => x.Player).ToList();
         }
 
         public bool ShouldReRoll(List<Roll> startingRolls)
         {
-            throw new NotImplementedException();
+            int highest = startingRolls.Max(x => x.Value);
+            return startingRolls.Count(x => x.Value == highest) > 1;
         }
 
         public Lobby StartingRoll(Lobby lobby)
@@ -36,8 +39,7 @@ namespace LudoAPI.Services
 
             if (rollCount >= playerCount)
             {
-                //Todo: fejlbesked
-                throw new Exception("All players have rolled");
+                throw new Exception("All players have already rolled");
             }
 
             var player = lobby.Players[rollCount];
@@ -47,9 +49,6 @@ namespace LudoAPI.Services
             lobby.StartingRolls.Add(newRoll);
 
             return lobby;
-
-
-
         }
     }
 }

@@ -4,12 +4,12 @@
     {
         public LobbyPlayer Player { get; }
 
-        private int value;
+        public int Value { get; }
 
         public Roll(LobbyPlayer _player, int _value)
         {
             this.Player = _player;
-            this.value = _value;
+            this.Value = _value;
         }
     }
 }
