@@ -37,7 +37,7 @@ namespace LudoTest.GameServiceTests
             var redPlayer = new Player(Color.Red);
             var yellowPlayer = new Player(Color.Yellow);
             var greenPlayer = new Player(Color.Green);
-            var players = new List<Player> { bluePlayer, redPlayer, yellowPlayer, greenPlayer };
+            var players = new List<LobbyPlayer> { bluePlayer, redPlayer, yellowPlayer, greenPlayer };
             
             //Act
             var newGame = service.StartNewGame(players);

@@ -5,5 +5,5 @@ namespace LudoAPI.Services;
 public interface IGameService
 {
     public Game Start(Lobby lobby);
-    public Player HaveTurn(Game game, Player player);
+    public LobbyPlayer HaveTurn(Game game, LobbyPlayer player);
 }

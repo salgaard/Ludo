@@ -28,10 +28,10 @@ namespace LudoTest.StartingServiceTests
             //Arrange
             var rolls = new List<Roll>()
             {
-                new Roll(new Player(1), 1),
-                new Roll(new Player(2), 2),
-                new Roll(new Player(3), 4),
-                new Roll(new Player(4), 4),
+                new Roll(new LobbyPlayer(1), 1),
+                new Roll(new LobbyPlayer(2), 2),
+                new Roll(new LobbyPlayer(3), 4),
+                new Roll(new LobbyPlayer(4), 4),
             };
 
             //Act
@@ -47,10 +47,10 @@ namespace LudoTest.StartingServiceTests
             //Arrange
             var rolls = new List<Roll>()
             {
-                new Roll(new Player(1), 1),
-                new Roll(new Player(2), 2),
-                new Roll(new Player(3), 3),
-                new Roll(new Player(4), 4),
+                new Roll(new LobbyPlayer(1), 1),
+                new Roll(new LobbyPlayer(2), 2),
+                new Roll(new LobbyPlayer(3), 3),
+                new Roll(new LobbyPlayer(4), 4),
             };
 
             //Act
@@ -66,10 +66,10 @@ namespace LudoTest.StartingServiceTests
             //Arrange
             var rolls = new List<Roll>()
             {
-                new Roll(new Player(1), 1),
-                new Roll(new Player(2), 2),
-                new Roll(new Player(3), 2),
-                new Roll(new Player(4), 4),
+                new Roll(new LobbyPlayer(1), 1),
+                new Roll(new LobbyPlayer(2), 2),
+                new Roll(new LobbyPlayer(3), 2),
+                new Roll(new LobbyPlayer(4), 4),
             };
 
             //Act
@@ -85,13 +85,13 @@ namespace LudoTest.StartingServiceTests
             //Arrange
             var rolls = new List<Roll>()
             {
-                new Roll(new Player(1), 1),
-                new Roll(new Player(2), 2),
-                new Roll(new Player(3), 4),
-                new Roll(new Player(4), 4),
+                new Roll(new LobbyPlayer(1), 1),
+                new Roll(new LobbyPlayer(2), 2),
+                new Roll(new LobbyPlayer(3), 4),
+                new Roll(new LobbyPlayer(4), 4),
             };
 
-            var expected = new List<Player>();
+            var expected = new List<LobbyPlayer>();
             expected.Add(rolls[2].Player);
             expected.Add(rolls[3].Player);
 
@@ -109,23 +109,23 @@ namespace LudoTest.StartingServiceTests
             //Arrange
             _diceServiceMock.Setup(service => service.RollDice()).Returns(1);
 
-            Lobby lobby = new Lobby(new List<Player>()
+            Lobby lobby = new Lobby(new List<LobbyPlayer>()
             {
-                new Player(1),
-                new Player(2),
-                new Player(3),
-                new Player(4)
+                new LobbyPlayer(1),
+                new LobbyPlayer(2),
+                new LobbyPlayer(3),
+                new LobbyPlayer(4)
             }) ;
 
-            Lobby expectedLobby = new Lobby(new List<Player>()
+            Lobby expectedLobby = new Lobby(new List<LobbyPlayer>()
             {
-                new Player(1),
-                new Player(2),
-                new Player(3),
-                new Player(4)
+                new LobbyPlayer(1),
+                new LobbyPlayer(2),
+                new LobbyPlayer(3),
+                new LobbyPlayer(4)
             });
 
-            var expectedRoll = new Roll(new Player(1), 1);
+            var expectedRoll = new Roll(new LobbyPlayer(1), 1);
             expectedLobby.StartingRolls.Add(expectedRoll);
 
             //Act

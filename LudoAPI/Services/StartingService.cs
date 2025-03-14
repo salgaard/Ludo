@@ -18,7 +18,7 @@ namespace LudoAPI.Services
             throw new NotImplementedException();
         }
 
-        public List<Player> GetReRollers(List<Roll> startingRolls)
+        public List<LobbyPlayer> GetReRollers(List<Roll> startingRolls)
         {
             throw new NotImplementedException();
         }
