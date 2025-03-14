@@ -66,10 +66,20 @@ def draw_ludo_piece(x, y, color, piece_number):
     head_offset = 10  
 
 
-    # Draw the body (cone as triangle)
-    pygame.draw.polygon(screen, color, [(x - body_width // 2, y), (x + body_width // 2, y), (x, y - body_height)])
+    # 🔲 Draw black outline for the body (slightly bigger)
+    pygame.draw.polygon(screen, BLACK, [(x - body_width // 2 - 2, y), 
+                                        (x + body_width // 2 + 2, y), 
+                                        (x, y - body_height - 2)])
 
-    # Draw the head (circle) **right above the triangle tip**
+    # 🔲 Draw black outline for the head (circle, slightly bigger)
+    pygame.draw.circle(screen, BLACK, (x, y - body_height - head_radius + head_offset), head_radius + 2)
+
+    # 🎨 Draw actual colored body (on top of the black outline)
+    pygame.draw.polygon(screen, color, [(x - body_width // 2, y), 
+                                        (x + body_width // 2, y), 
+                                        (x, y - body_height)])
+
+    # 🎨 Draw actual colored head (on top of the black outline)
     pygame.draw.circle(screen, color, (x, y - body_height - head_radius + head_offset), head_radius)
     
     piece_text = font.render(str(piece_number), True, BLACK)  
