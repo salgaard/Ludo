@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 
 namespace LudoAPI.Services
 {
-    public class StartingService
+    public class StartingService : IStartingService
     {
         private readonly IPlayerService _playerService;
         private readonly IDiceService _diceService;

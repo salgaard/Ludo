@@ -22,9 +22,7 @@ public class LobbyService : ILobbyService
             new LobbyPlayer(4),
         };
 
-
-         Lobby lobby = _lobbyRepo.AddNewLobby(new Lobby(lobbyPlayers, 0));
-
+        Lobby lobby = _lobbyRepo.AddNewLobby(lobbyPlayers);
 
         return lobby;
     }
