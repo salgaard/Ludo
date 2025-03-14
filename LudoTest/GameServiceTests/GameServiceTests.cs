@@ -31,20 +31,20 @@ namespace LudoTest.GameServiceTests
             var yellowPlayer = new LobbyPlayer(3);
             var greenPlayer = new LobbyPlayer(4);
             var players = new List<LobbyPlayer> { bluePlayer, redPlayer, yellowPlayer, greenPlayer };
-            
-            var lobby = new Lobby(players);
-            
+
+            var lobby = new Lobby(players, 1);
+
             //Act
             var newGame = service.Start(lobby);
-            
+
             //Assert
-            
+
             //A starting player hasn't yet been decided
             newGame.currentPlayerId.Should().BeNull();
-            
+
             newGame.players.Count.Should().Be(4);
             newGame.players.Should().BeEquivalentTo(players);
-            
+
         }
     }
 }

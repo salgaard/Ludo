@@ -30,7 +30,26 @@ namespace LudoAPI.Services
 
         public Lobby StartingRoll(Lobby lobby)
         {
-            throw new NotImplementedException();
+            int playerCount = lobby.Players.Count();
+
+            int rollCount = lobby.StartingRolls.Count();
+
+            if (rollCount >= playerCount)
+            {
+                //Todo: fejlbesked
+                throw new Exception("All players have rolled");
+            }
+
+            var player = lobby.Players[rollCount];
+            var value = _diceService.RollDice();
+
+            var newRoll = new Roll(player, value);
+            lobby.StartingRolls.Add(newRoll);
+
+            return lobby;
+
+
+
         }
     }
 }
