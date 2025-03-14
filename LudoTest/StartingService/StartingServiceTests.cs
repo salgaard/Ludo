@@ -86,14 +86,17 @@ namespace LudoTest.StartingServiceTests
             var rolls = new List<Roll>()
             {
                 new Roll(new LobbyPlayer(1), 1),
-                new Roll(new LobbyPlayer(2), 2),
+                new Roll(new LobbyPlayer(2), 4),
                 new Roll(new LobbyPlayer(3), 4),
                 new Roll(new LobbyPlayer(4), 4),
             };
 
-            var expected = new List<LobbyPlayer>();
-            expected.Add(rolls[2].Player);
-            expected.Add(rolls[3].Player);
+            var expected = new List<LobbyPlayer>
+            {
+                rolls[1].Player,
+                rolls[2].Player,
+                rolls[3].Player
+            };
 
             //Act
             var actual = startingService.GetReRollers(rolls);
