@@ -16,7 +16,7 @@ namespace LudoTest
             var result = service.RollDice();
 
             //Assert
-            Assert.Contains(result, acceptableNumbers);
+            result.Should().BeOneOf(acceptableNumbers);
         }
 
 
@@ -32,7 +32,7 @@ namespace LudoTest
             //service.RollDice();
 
             //Assert
-            Assert.Equal(true, result);
+            result.Should().Be(true);
         }
 
         [Fact]
