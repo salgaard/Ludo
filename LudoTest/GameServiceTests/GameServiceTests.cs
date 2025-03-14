@@ -7,12 +7,19 @@ namespace LudoTest.GameServiceTests
 {
     public class GameServiceTests
     {
+        private readonly Mock<IQueueService> _queueServiceMock;
+        
+        public GameServiceTests()
+        {
+            _queueServiceMock = new Mock<IQueueService>();
+        }
 
         [Fact]
         public void GameService_NewTurn_BackToQueue()
         {
             //Arrange
-            GameService service = new GameService();
+            QueueService queueService = new QueueService();
+            GameService service = new GameService(queueService);
 
             //Act
             service.NewTurn();
@@ -25,11 +32,11 @@ namespace LudoTest.GameServiceTests
         public void StartNewGame()
         {
             //Arrange 
-            GameService service = new GameService();
-            var bluePlayer = new Player(1);
-            var redPlayer = new Player(2);
-            var yellowPlayer = new Player(3);
-            var greenPlayer = new Player(4);
+            GameService service = new GameService(_queueServiceMock.Object);
+            var bluePlayer = new Player(Color.Blue);
+            var redPlayer = new Player(Color.Red);
+            var yellowPlayer = new Player(Color.Yellow);
+            var greenPlayer = new Player(Color.Green);
             var players = new List<Player> { bluePlayer, redPlayer, yellowPlayer, greenPlayer };
             
             //Act
@@ -38,7 +45,7 @@ namespace LudoTest.GameServiceTests
             //Assert
             
             //A starting player hasn't yet been decided
-            newGame.currentPlayer.Should().BeNull();
+            newGame.currentPlayerId.Should().BeNull();
             
             newGame.players.Count.Should().Be(4);
             newGame.players.Should().BeEquivalentTo(players);
