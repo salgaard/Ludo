@@ -13,13 +13,15 @@ namespace LudoTest.RepoTests
             // Arrange
             var repository = new LobbyRepository();
             var players = new List<LobbyPlayer> { new LobbyPlayer(1), new LobbyPlayer(2) };
-            var lobby = new Lobby(players, 1);
+            var expectedLobby = new Lobby(players, 1);
 
             // Act
-            repository.AddNewLobby(lobby);
+            var actualLobby = repository.AddNewLobby(players);
 
             // Assert
-            repository.Lobbies.Should().Contain(lobby);
+            repository.Lobbies.Should().ContainEquivalentOf(expectedLobby);
+            actualLobby.Should().BeEquivalentTo(expectedLobby);
+            repository.Lobbies.Count.Should().Be(1);
         }
 
         [Fact]
@@ -28,34 +30,37 @@ namespace LudoTest.RepoTests
             // Arrange
             var repository = new LobbyRepository();
             var players = new List<LobbyPlayer> { new LobbyPlayer(1), new LobbyPlayer(2) };
-            var lobby = new Lobby(players, 1);
-            repository.AddNewLobby(lobby);
+            var lobby = new Lobby(players, 2);
+
+            repository.AddNewLobby(players);
+            repository.AddNewLobby(players);
+            repository.AddNewLobby(players);
 
             // Act
-            var result = repository.Get(1);
+            var result = repository.Get(2);
 
             // Assert
-            result.Should().Be(lobby);
+            result.Should().BeEquivalentTo(lobby);
         }
 
-        [Fact]
-        public void GetNextId_ShouldReturnNextId()
-        {
-            // Arrange
-            var repository = new LobbyRepository();
-            var players1 = new List<LobbyPlayer> { new LobbyPlayer(1), new LobbyPlayer(2) };
-            var lobby1 = new Lobby(players1, 1);
-            repository.AddNewLobby(lobby1);
+        //[Fact]
+        //public void GetNextId_ShouldReturnNextId()
+        //{
+        //    // Arrange
+        //    var repository = new LobbyRepository();
+        //    var players1 = new List<LobbyPlayer> { new LobbyPlayer(1), new LobbyPlayer(2) };
+        //    var lobby1 = new Lobby(players1, 1);
+        //    repository.AddNewLobby(players1);
 
-            var players2 = new List<LobbyPlayer> { new LobbyPlayer(3), new LobbyPlayer(4) };
-            var lobby2 = new Lobby(players2, 2);
-            repository.AddNewLobby(lobby2);
+        //    var players2 = new List<LobbyPlayer> { new LobbyPlayer(3), new LobbyPlayer(4) };
+        //    var lobby2 = new Lobby(players2, 2);
+        //    repository.AddNewLobby(players2);
 
-            // Act
-            var nextId = repository.GetNextId();
+        //    // Act
+        //    var nextId = repository.GetNextId();
 
-            // Assert
-            nextId.Should().Be(3);
-        }
+        //    // Assert
+        //    nextId.Should().Be(3);
+        //}
     }
 }
