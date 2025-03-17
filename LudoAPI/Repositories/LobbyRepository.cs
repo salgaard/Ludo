@@ -6,14 +6,14 @@ namespace LudoAPI.Repositories
     {
         public List<Lobby> Lobbies { get; } = new List<Lobby>();
 
-        public Lobby AddNewLobby(Lobby lobby)
+        public Lobby AddNewLobby(List<LobbyPlayer> lobbyPlayers)
         {
-            Lobby newLobby = new(lobby.Players, GetNextId());
+            Lobby newLobby = new(lobbyPlayers, GetNextId());
             Lobbies.Add(newLobby);
             return newLobby;
         }
 
-        public int GetNextId()
+        private int GetNextId()
         {
             if (Lobbies.Count() == 0)
             {
@@ -23,15 +23,11 @@ namespace LudoAPI.Repositories
             {
                return Lobbies[Lobbies.Count()-1].Id+1;
             }
-
         }
-
-
 
         public Lobby Get(int id)
         {
-            throw new NotImplementedException();
+            return Lobbies.First(lobby => lobby.Id == id);
         }
-
     }
 }
