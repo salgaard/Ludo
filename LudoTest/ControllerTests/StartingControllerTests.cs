@@ -31,9 +31,7 @@ namespace LudoTest.ControllerTests
             var result = _controller.GetStartingRoll(lobby);
 
             // Assert
-            var actionResult = result.Should().BeOfType<ActionResult<Lobby>>().Subject;
-            var returnValue = actionResult.Value.Should().BeOfType<Lobby>().Subject;
-            returnValue.Should().BeEquivalentTo(lobby);
+            result.Should().BeOfType<ActionResult<Lobby>>().Which.Value.Should().BeEquivalentTo(lobby);
         }
 
         [Fact]
@@ -48,9 +46,7 @@ namespace LudoTest.ControllerTests
             var result = _controller.GetReRollers(startingRolls);
 
             // Assert
-            var actionResult = result.Should().BeOfType<ActionResult<List<LobbyPlayer>>>().Subject;
-            var returnValue = actionResult.Value.Should().BeOfType<List<LobbyPlayer>>().Subject;
-            returnValue.Should().BeEquivalentTo(reRollers);
+            result.Should().BeOfType<ActionResult<List<LobbyPlayer>>>().Which.Value.Should().BeEquivalentTo(reRollers);
         }
 
         [Fact]
@@ -65,9 +61,7 @@ namespace LudoTest.ControllerTests
             var result = _controller.GetShouldReRoll(startingRolls);
 
             // Assert
-            var actionResult = result.Should().BeOfType<ActionResult<bool>>().Subject;
-            var returnValue = actionResult.Value;
-            returnValue.Should().Be(shouldReRoll);
+            result.Should().BeOfType<ActionResult<bool>>().Which.Value.Should().Be(shouldReRoll);
         }
     }
 }
