@@ -33,5 +33,21 @@ namespace LudoTest.ControllerTests
             //Assert
 
         }
+
+        [Fact]
+        public void GetReRollers_ShouldReturnReRollers()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
+
+        [Fact]
+        public void GetShouldReRoll_ShouldReturnShouldReRoll()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
     }
 }
