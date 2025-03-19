@@ -1,5 +1,8 @@
-import pygame
 import sys
+import pygame
+import pygame.freetype
+from pygame.sprite import Sprite
+from pygame.rect import Rect
 
 # Initialize Pygame
 pygame.init()
@@ -45,7 +48,27 @@ class Button:
 
 # Functions for button actions
 def start_game():
-    print("Game Started!")  # Replace this with your Ludo game loop
+    starting_roll()
+
+def starting_roll():
+    new_screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Ludo - Starting Roll")
+    new_screen.fill(WHITE)
+    
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                quit_game()
+        
+        # Add content to the new frame here
+        new_screen.fill(WHITE)
+        text = font.render("Starting Roll", True, BLACK)
+        new_screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT // 5 - text.get_height() // 2))
+        draw_ludo_piece_with_dice(WIDTH // 5, 180, RED, 1, 3)
+
+        pygame.display.update()
 
 def quit_game():
     pygame.quit()
@@ -55,8 +78,8 @@ BUTTON_WIDTH, BUTTON_HEIGHT = 200, 60
 PADDING = 20  # Space between buttons
 
 # Create buttons
-play_button = Button("Play", WIDTH // 2 - BUTTON_WIDTH // 2, HEIGHT - BUTTON_HEIGHT - PADDING, BUTTON_WIDTH, BUTTON_HEIGHT, BLUE, GREEN, start_game)
-quit_button = Button("Quit", 200, 250, 200, 60, RED, (255, 100, 100), quit_game)
+play_button = Button("Play", WIDTH // 2 - BUTTON_WIDTH // 2, HEIGHT - BUTTON_HEIGHT - PADDING * 2 - BUTTON_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, BLUE, GREEN, start_game)
+quit_button = Button("Quit", WIDTH // 2 - BUTTON_WIDTH // 2, HEIGHT - BUTTON_HEIGHT - PADDING, BUTTON_WIDTH, BUTTON_HEIGHT, RED, (255, 100, 100), quit_game)
 
 
 def draw_ludo_piece(x, y, color, piece_number):
@@ -85,10 +108,46 @@ def draw_ludo_piece(x, y, color, piece_number):
     piece_text = font.render(str(piece_number), True, BLACK)  
     text_rect = piece_text.get_rect(center=(x, y + 30)) 
     screen.blit(piece_text, text_rect)
-    
+
+def draw_ludo_piece_with_dice(x, y, color, piece_number, dice_value):
+    draw_ludo_piece(x, y, color, piece_number)
+    body_height = 50
+    body_width = 50
+    head_radius = 15
+    head_offset = 10
+
+    # Draw dice next to the Ludo piece
+    dice_size = 80
+    dice_x = x + body_width // 2 + 10
+    dice_y = y - body_height // 2
+
+    pygame.draw.rect(screen, WHITE, (dice_x, dice_y, dice_size, dice_size))
+    pygame.draw.rect(screen, BLACK, (dice_x, dice_y, dice_size, dice_size), 2)
+
+    # Draw dots on the dice based on the dice_value
+    dot_radius = 3
+    dot_positions = {
+        1: [(dice_x + dice_size // 2, dice_y + dice_size // 2)],
+        2: [(dice_x + dice_size // 4, dice_y + dice_size // 4),
+            (dice_x + 3 * dice_size // 4, dice_y + 3 * dice_size // 4)],
+        3: [(dice_x + dice_size // 4, dice_y + dice_size // 4), (dice_x + dice_size // 2, dice_y + dice_size // 2),
+            (dice_x + 3 * dice_size // 4, dice_y + 3 * dice_size // 4)],
+        4: [(dice_x + dice_size // 4, dice_y + dice_size // 4), (dice_x + 3 * dice_size // 4, dice_y + dice_size // 4),
+            (dice_x + dice_size // 4, dice_y + 3 * dice_size // 4),
+            (dice_x + 3 * dice_size // 4, dice_y + 3 * dice_size // 4)],
+        5: [(dice_x + dice_size // 4, dice_y + dice_size // 4), (dice_x + 3 * dice_size // 4, dice_y + dice_size // 4),
+            (dice_x + dice_size // 2, dice_y + dice_size // 2), (dice_x + dice_size // 4, dice_y + 3 * dice_size // 4),
+            (dice_x + 3 * dice_size // 4, dice_y + 3 * dice_size // 4)],
+        6: [(dice_x + dice_size // 4, dice_y + dice_size // 4), (dice_x + 3 * dice_size // 4, dice_y + dice_size // 4),
+            (dice_x + dice_size // 4, dice_y + dice_size // 2), (dice_x + 3 * dice_size // 4, dice_y + dice_size // 2),
+            (dice_x + dice_size // 4, dice_y + 3 * dice_size // 4),
+            (dice_x + 3 * dice_size // 4, dice_y + 3 * dice_size // 4)]
+    }
+
+    for pos in dot_positions[dice_value]:
+        pygame.draw.circle(screen, BLACK, pos, dot_radius)
 
 def start_menu():
-    
     gameOn = True
     
     while gameOn:
@@ -107,7 +166,7 @@ def start_menu():
 
         # Draw buttons
         play_button.draw(screen)
-        #quit_button.draw(screen)
+        quit_button.draw(screen)
 
         # Event handling
         for event in pygame.event.get():
